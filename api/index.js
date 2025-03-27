@@ -1,9 +1,11 @@
 const express=require('express')
+const cors=require('cors')
 const mongoose=require('mongoose');
 const { usersRouter } = require('./routes/userRoute');
 const { authRoute } = require('./routes/authRoute');
 const app=express();
  app.use(express.json());
+ app.use(cors())
  app.use(express.urlencoded({json:false}))
 mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log(`database connected`))
